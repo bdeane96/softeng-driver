@@ -1,7 +1,3 @@
 language: java
-jdk:
-    - oraclejdk8
-
-build:
-    ci:
-    - shippable_retry mvn install
+jdk: oraclejdk8
+after_success: mvn clean test
