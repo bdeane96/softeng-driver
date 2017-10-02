@@ -30,13 +30,14 @@ public class Driver {
 		List<Student> studentList2 = new LinkedList<Student>();
 		List<Student> studentList3 = new LinkedList<Student>();
 		List<Student> studentList4 = new LinkedList<Student>();
-
-		Student student1 = new Student("Bronagh Deane", "21", "26/05/1996", "14407778");
-		Student student2 = new Student("Niamh Fitzgerald", "22", "23/06/1995", "14308016");
-		Student student3 = new Student("Enda Barrett", "22", "23/08/1995", "14400234");
-		Student student4 = new Student("Olivia Flanagan", "22", "24/08/1995", "14400019");
-		Student student5 = new Student("Conor Healy", "22", "23/06/1995", "12222222");
-		Student student6 = new Student("Katie Kennedy", "21", "21/04/1996", "14409999");
+		DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy");
+		
+		Student student1 = new Student("Bronagh Deane", "21", dtf.parseDateTime("05/26/1996"), "14407778");
+		Student student2 = new Student("Niamh Fitzgerald", "22", dtf.parseDateTime("06/25/1995"), "14308016");
+		Student student3 = new Student("Enda Barrett", "22", dtf.parseDateTime("08/23/1995"), "14400234");
+		Student student4 = new Student("Olivia Flanagan", "22", dtf.parseDateTime("08/24/1995"), "14400019");
+		Student student5 = new Student("Conor Healy", "22", dtf.parseDateTime("06/23/1995"), "12222222");
+		Student student6 = new Student("Katie Kennedy", "21", dtf.parseDateTime("04/16/1996"), "14409999");
 
 		allStudents.add(student1);
 		allStudents.add(student2);
@@ -73,7 +74,7 @@ public class Driver {
 		moduleList2.add(module4);
 		moduleList2.add(module5);
 
-		DateTimeFormatter dtf = DateTimeFormat.forPattern("MM/dd/yyyy");
+		
 		String date = "09/01/2017";
 		DateTime startdate = dtf.parseDateTime(date);
 		date = "05/26/2018";
@@ -101,6 +102,7 @@ public class Driver {
 					List<Student> students = module.getStudentList();
 					for (Iterator<Student> studIt = students.iterator(); studIt.hasNext();) {
 						Student stud = studIt.next();
+						//usernames are 'unique'
 						if (student.getUsername().equals(stud.getUsername())) {
 							modulesInfo += module.getModuleName();
 							if (modulesIt.hasNext()) {
