@@ -1,3 +1,11 @@
 language: java
-jdk: oraclejdk8
-after_success: mvn clean test
+jdk:
+    - oraclejdk8
+
+build:
+    ci:
+    #Create folders for test and code coverage
+    - mkdir -p shippable/testresults
+    - mvn test
+    - mvn install
+    - cp -r target shippable/testresults
